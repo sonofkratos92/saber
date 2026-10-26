@@ -143,6 +143,11 @@ export interface SaberConfig {
      * @beta
      */
     lazy?: boolean
+    /**
+     * Display a compiling indicator in browser in dev mode
+     * Default to `true`
+     */
+    browserIndicator?: boolean
   }
   server?: {
     host?: string

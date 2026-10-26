@@ -11,14 +11,17 @@ module.exports = function(cli) {
     .option('--host <host>', 'Server host', { default: '0.0.0.0' })
     .option('--inspect-webpack', 'Inspect webpack config in your editor')
     .option('--no-cache', 'Disable cache')
+    .option('--no-browser-indicator', 'Disable compiling indicator in browser')
     .action(
       handleError((cwd = '.', options) => {
         setNodeEnv('development')
 
-        const { host, port, lazy, cache } = options
+        const { host, port, lazy, cache, browserIndicator } = options
         delete options.host
         delete options.port
         delete options.lazy
+        delete options.cache
+        delete options.browserIndicator
         return require('..')
           .createSaber(Object.assign({ cwd, dev: true }, options), {
             server: {
@@ -27,7 +30,8 @@ module.exports = function(cli) {
             },
             build: {
               lazy,
-              cache
+              cache,
+              browserIndicator
             }
           })
           .serve()

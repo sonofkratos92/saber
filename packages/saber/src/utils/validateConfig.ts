@@ -95,7 +95,8 @@ export function validateConfig(
       cssSourceMap: 'boolean?',
       lazy: 'boolean?',
       outDir: 'string?',
-      cache: 'boolean?'
+      cache: 'boolean?',
+      browserIndicator: 'boolean?'
     },
     {
       publicUrl: '/',
@@ -104,7 +105,8 @@ export function validateConfig(
       cssSourceMap: false,
       lazy: false,
       outDir: 'public',
-      cache: true
+      cache: true,
+      browserIndicator: true
     }
   )
 

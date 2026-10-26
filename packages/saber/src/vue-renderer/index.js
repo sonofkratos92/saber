@@ -479,6 +479,18 @@ export class VueRenderer {
       }
     })
 
+    if (this.api.config.build.browserIndicator) {
+      Object.values(this.api.compilers).forEach(compiler => {
+        compiler.on('status-changed', ({ status, allCompilers }) => {
+          hotMiddleware.publish({
+            action: 'saber:compiler-status',
+            status,
+            allCompilers
+          })
+        })
+      })
+    }
+
     serverCompiler.watch({}, error => {
       if (error) {
         console.error(error)

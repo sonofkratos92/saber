@@ -90,6 +90,9 @@ module.exports = (api, { type }) => {
       __DEV__: api.dev,
       __PUBLIC_URL__: JSON.stringify(api.config.build.publicUrl),
       __LAZY__: api.config.build.lazy && api.dev,
+      __BROWSER_INDICATOR__: Boolean(
+        api.config.build.browserIndicator && api.dev
+      ),
       __SABER_VERSION__: JSON.stringify(require('../../package.json').version)
     }
   ])
